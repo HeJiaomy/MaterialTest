@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="FruitActivityTheme" parent="AppTheme">
+        <!-- 状态栏的主题色改为透明 -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+</resources>
