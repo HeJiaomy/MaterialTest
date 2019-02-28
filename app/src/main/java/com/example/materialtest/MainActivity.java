@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Slide;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +23,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import static android.view.Gravity.LEFT;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -80,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2); //设置两行显示
         recyclerView.setLayoutManager(layoutManager);
-        fruitAdapter = new FruitAdapter(mFruitLists);
+        fruitAdapter = new FruitAdapter(mFruitLists, this);
         recyclerView.setAdapter(fruitAdapter);
 
         swipeRefresh.setColorSchemeResources(R.color.colorAccent);
@@ -90,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
                 refreshFruits();
             }
         });
+
+        setupLayout();
     }
 
     private void refreshFruits() {
@@ -145,5 +151,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+
+    private void setupLayout() {
+        Slide slide = new Slide(Gravity.START);
+        slide.setDuration(5000);
+        getWindow().setReenterTransition(slide);
+        getWindow().setExitTransition(slide);
     }
 }
