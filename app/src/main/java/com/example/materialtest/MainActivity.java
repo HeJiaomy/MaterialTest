@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupLayout() {
         Slide slide = new Slide(Gravity.START);
-        slide.setDuration(5000);
+        slide.setDuration(500);
         getWindow().setReenterTransition(slide);
         getWindow().setExitTransition(slide);
     }
