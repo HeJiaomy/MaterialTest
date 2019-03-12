@@ -14,8 +14,8 @@ import com.bumptech.glide.Glide;
 
 public class FruitActivity extends AppCompatActivity {
 
-    public static final String FRUIT_NAME="fruit_name";
-    public static final String FRUIT_IMAGE_ID="fruit_image_id";
+    public static final String FRUIT_NAME = "fruit_name";
+    public static final String FRUIT_IMAGE_ID = "fruit_image_id";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +35,15 @@ public class FruitActivity extends AppCompatActivity {
         }
         collapsingToolbar.setTitle(fruitName);
         Glide.with(this).load(fruitImageId).into(imageView);
-        String fruitContent= generateFruitContent(fruitName);
+        String fruitContent = generateFruitContent(fruitName);
         textView.setText(fruitContent);
+
+        getWindow().getEnterTransition().setDuration(500);
     }
 
-    private String generateFruitContent(String fruitName){
-        StringBuilder sb= new StringBuilder();
-        for (int i=0; i<500;i++){
+    private String generateFruitContent(String fruitName) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 500; i++) {
             sb.append(fruitName);
         }
         return sb.toString();
@@ -49,7 +51,7 @@ public class FruitActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 return true;

@@ -29,7 +29,7 @@
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax"
-                android:transitionName="shared_element"/>
+                android:transitionName="@string/shared_element_img"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
