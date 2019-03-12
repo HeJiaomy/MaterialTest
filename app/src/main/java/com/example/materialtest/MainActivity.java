@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Explode;
+import android.transition.Fade;
 import android.transition.Slide;
 import android.view.Gravity;
 import android.view.Menu;
@@ -23,8 +25,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import static android.view.Gravity.LEFT;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -154,6 +154,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupLayout() {
+        fade();
+    }
+
+    private void explode(){
+        Explode explode = new Explode();
+        explode.setDuration(500);
+        getWindow().setReenterTransition(explode);
+        getWindow().setExitTransition(explode);
+    }
+
+    private void fade() {
+        Fade fade= new Fade();
+        fade.setDuration(500);
+        getWindow().setReenterTransition(fade);
+        getWindow().setExitTransition(fade);
+    }
+
+    private void slide(){
         Slide slide = new Slide(Gravity.START);
         slide.setDuration(500);
         getWindow().setReenterTransition(slide);
