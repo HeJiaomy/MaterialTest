@@ -2,4 +2,6 @@
     <string name="app_name">MaterialTest</string>
     <string name="shared_element_img">shared_hero_img</string>
     <string name="shared_element_tv">shared_element_name</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
 </resources>

@@ -9,6 +9,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -52,9 +53,14 @@ public class MainActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
+            //返回图标
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.mipmap.ic_menu);
+//            actionBar.setHomeAsUpIndicator(R.mipmap.ic_menu);
+            actionBar.setHomeButtonEnabled(true);
         }
+
+        initDrawerToggle(toolbar);
+
         navView.setCheckedItem(R.id.nav_phone); //设置默认选中
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -96,6 +102,28 @@ public class MainActivity extends AppCompatActivity {
         });
 
         setupLayout();
+    }
+
+    private void initDrawerToggle(final Toolbar toolbar) {
+
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                invalidateOptionsMenu();
+                Toast.makeText(drawerView.getContext(), "OPEN", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                invalidateOptionsMenu();
+                Toast.makeText(drawerView.getContext(), "CLOSE", Toast.LENGTH_SHORT).show();
+            }
+        };
+        //实现箭头和三条杠图案切换和抽屉拉合的同步
+        drawerToggle.syncState();
+        drawerLayout.addDrawerListener(drawerToggle);
     }
 
     private void refreshFruits() {
@@ -157,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
         fade();
     }
 
-    private void explode(){
+    private void explode() {
         Explode explode = new Explode();
         explode.setDuration(500);
         getWindow().setReenterTransition(explode);
@@ -165,13 +193,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fade() {
-        Fade fade= new Fade();
+        Fade fade = new Fade();
         fade.setDuration(500);
         getWindow().setReenterTransition(fade);
         getWindow().setExitTransition(fade);
     }
 
-    private void slide(){
+    private void slide() {
         Slide slide = new Slide(Gravity.START);
         slide.setDuration(500);
         getWindow().setReenterTransition(slide);
