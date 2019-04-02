@@ -9,4 +9,8 @@
     </style>
 
     <style name="FruitActivityTheme" parent="AppTheme"/>
+
+    <style name="TranslationAnimation" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowContentTransitions">true</item> //启用窗口内容转换
+    </style>
 </resources>

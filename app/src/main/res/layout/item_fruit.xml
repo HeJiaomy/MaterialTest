@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:scaleType="centerCrop"
+            style="@style/TranslationAnimation"
             android:transitionName="@string/shared_element_img" />
 
         <TextView
